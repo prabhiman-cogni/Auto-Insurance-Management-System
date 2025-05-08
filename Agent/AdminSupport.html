@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Support</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Auto Insurance</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav"> 
+        <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="policy.html">Policy</a></li>
+        <li class="nav-item"><a class="nav-link" href="claims.html">Claims</a></li>
+        <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
+        <li class="nav-item"><a class="nav-link active" href="support.html">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Page Title -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Customer Support</h2>
+  <!-- Submit Support Ticket -->
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">Submit a Support Ticket</div>
+    <div class="card-body">
+      <form id="supportForm">
+        <div class="mb-3">
+          <label for="supportEmail" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="supportEmail" required />
+        </div>
+        <div class="mb-3">
+          <label for="supportIssue" class="form-label">Issue</label>
+          <input type="text" class="form-control" id="supportIssue" required />
+        </div>
+        <div class="mb-3">
+          <label for="supportDetails" class="form-label">Details</label>
+          <textarea class="form-control" id="supportDetails" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+  <!-- Ticket Status Table -->
+  <div class="card">
+    <div class="card-header bg-secondary text-white">Support Tickets</div>
+    <div class="card-body">
+      <table class="table table-bordered table-striped" id="supportTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Issue</th>
+            <th>Details</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamic Rows -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- jQuery -->
+<script>
+  let ticketCount = 1;
+  $('#supportForm').on('submit', function (e) {
+    e.preventDefault();
+    const email = $('#supportEmail').val();
+    const issue = $('#supportIssue').val();
+    const details = $('#supportDetails').val();
+    const row = `
+      <tr>
+        <td>${ticketCount++}</td>
+        <td>${email}</td>
+        <td>${issue}</td>
+        <td>${details}</td>
+        <td>Open</td>
+      </tr>
+    `;
+    $('#supportTable tbody').append(row);
+    this.reset();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
