@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auto Insurance Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Roboto', sans-serif;
+            background-color: #141837; /* Deeper, more premium dark background */
+            color: #e0e6ed; /* Light grayish-blue text for better contrast */
+        }
+        .full-page-background {
+            background: url('https://images.unsplash.com/photo-1542369972-d561141b6e59?auto=format&fit=crop&w=1920&q=85') no-repeat center center fixed; /* Dynamic, slightly blurred city at night */
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .full-page-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(20, 25, 50, 0.8); /* Slightly lighter, more translucent overlay */
+            z-index: 1;
+        }
+        .navbar, .container, footer {
+            position: relative;
+            z-index: 2;
+        }
+        .navbar {
+            background-color: rgba(30, 35, 65, 0.85) !important; /* Darker, more integrated navbar */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.4); /* More pronounced shadow */
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 2rem; /* Slightly larger brand text */
+            color: #66aaff !important; /* A more vibrant, electric blue */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+            padding: 0.7rem 1.5rem; /* Slightly larger padding */
+            border-radius: 8px; /* More rounded nav links */
+            margin-left: 0.3rem;
+            margin-right: 0.3rem;
+            color: #b0c4de !important; /* Softer text color for links */
+        }
+        .nav-link:hover {
+            color: #ffffff !important;
+            background-color: rgba(102, 170, 255, 0.15); /* Subtle, brighter hover effect */
+            transform: translateY(-3px); /* More noticeable lift on hover */
+        }
+        .nav-link.active {
+            color: #ffffff !important;
+            background-color: #5e8fca; /* Solid, slightly darker active background */
+            border-bottom: none;
+        }
+        .hero-section {
+            padding: 5rem 3rem; /* Increased padding */
+            border-radius: 1.2rem;
+            background: linear-gradient(135deg, #37517e, #273a5e); /* Deeper, more subtle gradient */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+            margin-top: 4rem;
+            color: #f0f8ff; /* Light, elegant text color */
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem; /* Larger, more impactful title */
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+            margin-bottom: 1rem;
+        }
+        .hero-section p {
+            font-size: 1.3rem;
+            color: #d3e0e9;
+            margin-bottom: 2rem;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider min width */
+            gap: 2.5rem; /* Increased gap */
+            padding: 3rem; /* Increased padding */
+            margin-top: 3rem;
+        }
+        .dashboard-item {
+            background-color: rgba(40, 50, 75, 0.8); /* Slightly lighter card background */
+            border-radius: 1rem;
+            color: #e0e6ed;
+            padding: 2.5rem; /* Increased padding */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smoother transition */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* More noticeable card shadow */
+            border-left: 5px solid transparent; /* Subtle left border for color accent */
+        }
+        .dashboard-item:nth-child(1) { border-left-color: #a78bfa; } /* Purple */
+        .dashboard-item:nth-child(2) { border-left-color: #6ee7b7; } /* Green */
+        .dashboard-item:nth-child(3) { border-left-color: #facc15; } /* Yellow */
+        .dashboard-item:nth-child(4) { border-left-color: #e879f9; } /* Pink */
+        .dashboard-item:nth-child(5) { border-left-color: #38bdf8; } /* Cyan */
+        .dashboard-item:nth-child(6) { border-left-color: #fb7185; } /* Red */
+
+        .dashboard-item:hover {
+            transform: translateY(-8px); /* More noticeable lift */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Enhanced hover shadow */
+        }
+        .dashboard-item h3 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #ffffff; /* White title for better contrast */
+            margin-bottom: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .dashboard-item p {
+            color: #c0c8d2;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .btn-dashboard {
+            display: inline-block;
+            font-weight: 600;
+            padding: 0.7rem 1.8rem; /* Slightly larger button */
+            border-radius: 25px; /* More rounded button */
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* More noticeable button shadow */
+            text-decoration: none;
+            color: #fff;
+            background-color: #5e8fca; /* More prominent button color */
+            border: 1px solid #5e8fca;
+        }
+        .btn-dashboard:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            background-color: #4a77b3; /* Slightly darker hover color */
+            border-color: #4a77b3;
+        }
+        footer {
+            background-color: rgba(25, 30, 55, 0.9) !important; /* Darker footer */
+            color: #b0c4de;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            margin-top: 4rem;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div class="full-page-background">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">My Auto Insurance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="my-profile.html">My Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="my-policies.html">My Policies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="claims.html">Claims</a></li>
+                    <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="help.html">Help</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-lg-5 mt-4">
+        <div class="hero-section">
+            <h1 class="display-4 fw-bold">Your Insurance, Simplified.</h1>
+            <p class="lead">Access and manage your auto insurance with ease and security.</p>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="dashboard-grid">
+            <div class="dashboard-item">
+                <h3>My Profile</h3>
+                <p>Manage your personal details, contact information, and preferences.</p>
+                <a href="my-profile.html" class="btn btn-dashboard">View Profile</a>
+            </div>
+            <div class="dashboard-item">
+                <h3>My Policies</h3>
+                <p>Review the specifics of your current and past insurance policies.</p>
+                <a href="my-policies.html" class="btn btn-dashboard">See Policies</a>
+            </div>
+            <div class="dashboard-item">
+                <h3>Claims Center</h3>
+                <p>File new claims and track the progress of your existing ones.</p>
+                <a href="claims.html" class="btn btn-dashboard">Go to Claims</a>
+            </div>
+            <div class="dashboard-item">
+                <h3>Payment History</h3>
+                <p>View your past payments and manage your payment methods.</p>
+                <a href="payments.html" class="btn btn-dashboard">View Payments</a>
+            </div>
+            <div class="dashboard-item">
+                <h3>Customer Support</h3>
+                <p>Connect with our support team for any questions or assistance.</p>
+                <a href="support.html" class="btn btn-dashboard">Get Support</a>
+            </div>
+            <div class="dashboard-item">
+                <h3>Account Security</h3>
+                <p>Manage your login credentials and enhance your account security.</p>
+                <a href="settings.html" class="btn btn-dashboard">Security Settings</a>
+            </div>
+        </div>
+    </div>
+    <footer class="text-white text-center py-3 mt-5">
+        <p>&copy; 2025 My Auto Insurance. All rights reserved.</p>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
