@@ -21,7 +21,7 @@
         }
  
         /* Input Fields */
-        input, select {
+        input, select, textarea {
             border-radius: 8px;
             padding: 10px;
             font-size: 16px;
@@ -48,41 +48,59 @@
                         <div class="card-body">
                             <form id="claim-form">
                                 <div class="row g-3">
-                                    <!-- Claim ID Field -->
+                                    <!-- Claim ID Field (Dropdown) -->
                                     <div class="col-md-6">
                                         <label for="claimId" class="form-label">Claim ID</label>
-                                        <input type="number" class="form-control" id="claimId" placeholder="Enter Claim ID" required>
+                                        <select class="form-select" id="claimId" required>
+                                            <option value="" disabled selected>Select Claim ID</option>
+                                            <option value="1001">1001</option>
+                                            <option value="1002">1002</option>
+                                        </select>
                                     </div>
  
-                                    <!-- Policy ID Field -->
+                                    <!-- Policy ID Field (Dropdown) -->
                                     <div class="col-md-6">
                                         <label for="policyId" class="form-label">Policy ID</label>
-                                        <input type="number" class="form-control" id="policyId" placeholder="Enter Policy ID" required>
+                                        <select class="form-select" id="policyId" required>
+                                            <option value="" disabled selected>Select Policy ID</option>
+                                            <option value="2001">2001</option>
+                                            <option value="2002">2002</option>
+                                        </select>
                                     </div>
  
-                                    <!-- Claim Amount Field -->
+                                    <!-- Claim Amount -->
                                     <div class="col-md-6">
                                         <label for="claimAmount" class="form-label">Claim Amount</label>
                                         <input type="number" class="form-control" id="claimAmount" placeholder="Enter Claim Amount" step="0.01" required>
                                     </div>
  
-                                    <!-- Claim Date Field -->
+                                    <!-- Claim Date -->
                                     <div class="col-md-6">
                                         <label for="claimDate" class="form-label">Claim Date</label>
                                         <input type="date" class="form-control" id="claimDate" required>
                                     </div>
  
-                                    <!-- Claim Status Field -->
-                                    <!-- <div class="col-md-6">
-                                        <label for="claimStatus" class="form-label">Claim Status</label>
-                                        <select class="form-select" id="claimStatus" required>
-                                            <option value="" disabled selected>Select Claim Status</option>
-                                            <option value="OPEN">OPEN</option>
-                                            <option value="APPROVED">APPROVED</option>
-                                            <option value="REJECTED">REJECTED</option>
-                                        </select>
-                                    </div> -->
+<!-- Reason for Claim -->
+<div class="col-md-12">
+    <label for="claimReason" class="form-label">Reason for Claim</label>
+    <textarea class="form-control" id="claimReason" rows="4" placeholder="Enter reason for claim..." required></textarea>
+</div>
+ 
+ 
+ 
+                                    <!-- Description -->
+                                    <div class="col-md-12">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control" id="description" rows="4" placeholder="Provide claim details..." required></textarea>
+                                    </div>
+ 
+                                    <!-- Attach Documents -->
+                                    <div class="col-md-12">
+                                        <label for="attachments" class="form-label">Attach Documents</label>
+                                        <input type="file" class="form-control" id="attachments" multiple accept="image/*,video/*,.pdf">
+                                    </div>
                                 </div>
+ 
                                 <div class="text-center mt-4">
                                     <button type="submit" class="btn btn-dark px-5">Submit Claim</button>
                                 </div>
