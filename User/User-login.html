@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login - Insurance Dashboard</title>
     <style>
-        /* ... (Your existing CSS) ... */
+        /* Your existing CSS */
         * {
             margin: 0;
             padding: 0;
@@ -171,18 +171,28 @@
 
             <button class="back-btn" id="backBtn">
                 <a href="../index.html" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit;">Back to Main Page</a>
-              </button>
+            </button>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Predefined usernames and passwords
+            // Predefined usernames and passwords for different roles
             const predefinedUsers = {
-                'abcd@gmail.com': 'abcd123',
-                'efg@gmail.com': 'efg123'
+                'user': { 'user@gmail.com': 'user123' },
+                'agent': { 'agent@gmail.com': 'agent123' },
+                'admin': { 'admin@gmail.com': 'admin123' }
             };
+
+            // Function to get query parameters from the URL
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Determine the role from the query parameter
+            const role = getQueryParam('role') || 'user'; // Default to 'user' if no role is provided
 
             function isValidEmail(email) {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -207,9 +217,18 @@
                 }
 
                 if (isValid) {
-                    // Check against predefined users
-                    if (predefinedUsers.hasOwnProperty(email) && predefinedUsers[email] === password) {
-                        window.location.href = "UserDashboard.html"; // Replace with the actual path
+                    // Check against predefined users for the current role
+                    if (predefinedUsers[role] && predefinedUsers[role][email] === password) {
+                        // Redirect to the appropriate dashboard based on the role
+                        if (role === 'agent') {
+                            window.location.href = "../Agent/AgentDashboard.html"; // Redirect to Agent Dashboard
+                        }
+                        else if (role === 'admin') {
+                            window.location.href = "../Admin/AdminDashboard.html"; // Redirect to Admin Dashboard
+                        }  
+                        else {
+                            window.location.href = "UserDashboard.html"; // Redirect to User Dashboard
+                        }
                     } else {
                         emailError.text('Invalid email or password.');
                         passwordError.text('Invalid email or password.');
