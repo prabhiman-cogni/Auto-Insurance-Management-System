@@ -4,217 +4,255 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Auto Insurance Managment System</title>
+    <title>Auto Insurance Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Keeping the light background */
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: white;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .btn-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .left-column {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black bg-opacity-75">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black bg-opacity-75 shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Auto Insurance Management</a>
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-car-alt me-2"></i>Auto Insurance Management
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="Dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="policy.html">Policy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="claims.html">Claims</a></li>
-                    <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
-                    <li class="nav-item"><a class="nav-link" href="help.html">Help</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Dashboard.html"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="policy.html"><i class="fas fa-file-contract me-1"></i>Policy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="claims.html"><i class="fas fa-exclamation-triangle me-1"></i>Claims</a></li>
+                    <li class="nav-item"><a class="nav-link" href="payments.html"><i class="fas fa-credit-card me-1"></i>Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html"><i class="fas fa-headset me-1"></i>Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="help.html"><i class="fas fa-question-circle me-1"></i>Help</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container-fluid min-vh-100 mt-2">
+    <div class="container-fluid py-4">
         <div class="row">
-            <!-- Left Column (Filters) -->
-            <div class="col-12 col-md-3 bg-dark text-white p-4 order-1 order-md-1">
-                <!-- Card 1: Vehicle Details -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Your Vehicle Details</h5>
-                        <p class="card-text"><strong>Name-Variant:</strong> Honda City VX</p>
-                        <p class="card-text"><strong>Vehicle Number:</strong> MH12AB1234</p>
-                        <p class="card-text"><strong>Registered Date:</strong> 2023-05-01</p>
+            <div class="col-12 col-md-3 p-3 order-1 order-md-1">
+                <div class="left-column p-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-car me-2"></i>Your Vehicle Details</h5>
+                            <p class="card-text"><strong>Name-Variant:</strong> Honda City VX</p>
+                            <p class="card-text"><strong>Vehicle Number:</strong> MH12AB1234</p>
+                            <p class="card-text"><strong>Registered Date:</strong> 2023-05-01</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 2: Plan Type -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Plan Type</h5>
-                        <select class="form-select" id="planType">
-                            <option value="comprehensive">Comprehensive</option>
-                            <option value="thirdParty">Third Party</option>
-                        </select>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-list-ul me-2"></i>Plan Type</h5>
+                            <select class="form-select" id="planType">
+                                <option value="comprehensive">Comprehensive</option>
+                                <option value="thirdParty">Third Party</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 3: Plan Duration -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Plan Duration</h5>
-                        <select class="form-select" id="planDuration">
-                            <option value="1">1 Year</option>
-                            <option value="2">2 Years</option>
-                            <option value="3">3 Years</option>
-                        </select>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-calendar-alt me-2"></i>Plan Duration</h5>
+                            <select class="form-select" id="planDuration">
+                                <option value="1">1 Year</option>
+                                <option value="2">2 Years</option>
+                                <option value="3">3 Years</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column (Policies) -->
-            <div class="col-12 col-md-9 bg-light p-4 order-2 order-md-2">
+            <div class="col-12 col-md-9 p-3 order-2 order-md-2">
                 <div class="row">
-                    <!-- Policies Section -->
-                    <div class="col-12 col-lg-8">
-                        <h4>Policies</h4>
-                        <div class="row g-4 mt-2">
+                    <div class="col-12 col-lg-8 mb-4">
+                        <h4><i class="fas fa-shield-alt me-2"></i>Available Policies</h4>
+                        <div class="row g-3 mt-2">
 
                             <div class="col-12">
-                                <div class="card shadow" style="width: 100%; height: auto;">
+                                <div class="card shadow-sm">
                                     <div class="card-body d-flex justify-content-between align-items-center">
-                                        <!-- Left Side -->
                                         <div>
-                                            <h5 class="card-title">Policy 1</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</p>
-                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#policy1Details" aria-expanded="false"
-                                                aria-controls="policy1Details">
-                                                More
+                                            <h5 class="card-title">Comprehensive Plan</h5>
+                                            <p class="card-text small text-muted">Policy Number: CP12345</p>
+                                            <p class="card-text">A comprehensive insurance plan covering damages to your vehicle and third-party liabilities.</p>
+                                            <p class="card-text small"><strong>Coverage:</strong> $50,000 | <strong>Premium:</strong> $500/year</p>
+                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#policy1Details" aria-expanded="false" aria-controls="policy1Details">
+                                                More Details <i class="fas fa-chevron-down ms-1"></i>
                                             </button>
                                         </div>
-                                        <!-- Right Side -->
                                         <div>
-                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                            <a href="#" class="btn btn-primary btn-sm">Buy Now</a>
                                         </div>
                                     </div>
-                                    <!-- Collapsible Section -->
                                     <div class="collapse" id="policy1Details">
-                                        <div class="card-body">
-                                            <p class="card-text">Additional details about Policy 1. This section
-                                                provides more information about the policy, including terms, conditions,
-                                                and benefits.</p>
+                                        <div class="card-body bg-light rounded-bottom">
+                                            <p class="card-text">Additional details about this policy, including terms, conditions, and benefits. This plan offers extensive coverage for both own damage and third-party liabilities.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <div class="card shadow" style="width: 100%; height: auto;">
+                                <div class="card shadow-sm">
                                     <div class="card-body d-flex justify-content-between align-items-center">
-                                        <!-- Left Side -->
                                         <div>
-                                            <h5 class="card-title">Policy 2</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</p>
-                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#policy2Details" aria-expanded="false"
-                                                aria-controls="policy1Details">
-                                                More
+                                            <h5 class="card-title">Third Party Plan</h5>
+                                            <p class="card-text small text-muted">Policy Number: TP67890</p>
+                                            <p class="card-text">A basic insurance plan covering third-party liabilities only.</p>
+                                            <p class="card-text small"><strong>Coverage:</strong> $20,000 | <strong>Premium:</strong> $200/year</p>
+                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#policy2Details" aria-expanded="false" aria-controls="policy2Details">
+                                                More Details <i class="fas fa-chevron-down ms-1"></i>
                                             </button>
                                         </div>
-                                        <!-- Right Side -->
                                         <div>
-                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                            <a href="#" class="btn btn-primary btn-sm">Buy Now</a>
                                         </div>
                                     </div>
-                                    <!-- Collapsible Section -->
                                     <div class="collapse" id="policy2Details">
-                                        <div class="card-body">
-                                            <p class="card-text">Additional details about Policy 2. This section
-                                                provides more information about the policy, including terms, conditions,
-                                                and benefits.</p>
+                                        <div class="card-body bg-light rounded-bottom">
+                                            <p class="card-text">Additional details about this policy, including terms, conditions, and benefits. This plan is ideal for those seeking minimal coverage at a lower cost.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <div class="card shadow" style="width: 100%; height: auto;">
+                                <div class="card shadow-sm">
                                     <div class="card-body d-flex justify-content-between align-items-center">
-                                        <!-- Left Side -->
                                         <div>
-                                            <h5 class="card-title">Policy 3</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</p>
-                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#policy3Details" aria-expanded="false"
-                                                aria-controls="policy1Details">
-                                                More
+                                            <h5 class="card-title">Standard Plan</h5>
+                                            <p class="card-text small text-muted">Policy Number: SP34567</p>
+                                            <p class="card-text">A balanced insurance plan offering good coverage at a reasonable price.</p>
+                                            <p class="card-text small"><strong>Coverage:</strong> $35,000 | <strong>Premium:</strong> $350/year</p>
+                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#policy3Details" aria-expanded="false" aria-controls="policy3Details">
+                                                More Details <i class="fas fa-chevron-down ms-1"></i>
                                             </button>
                                         </div>
-                                        <!-- Right Side -->
                                         <div>
-                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                            <a href="#" class="btn btn-primary btn-sm">Buy Now</a>
                                         </div>
                                     </div>
-                                    <!-- Collapsible Section -->
                                     <div class="collapse" id="policy3Details">
-                                        <div class="card-body">
-                                            <p class="card-text">Additional details about Policy 3. This section
-                                                provides more information about the policy, including terms, conditions,
-                                                and benefits.</p>
+                                        <div class="card-body bg-light rounded-bottom">
+                                            <p class="card-text">Additional details about the Standard Plan. This includes moderate coverage for own damage and sufficient third-party liability protection.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <div class="card shadow" style="width: 100%; height: auto;">
+                                <div class="card shadow-sm">
                                     <div class="card-body d-flex justify-content-between align-items-center">
-                                        <!-- Left Side -->
                                         <div>
-                                            <h5 class="card-title">Policy 4</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</p>
-                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#policy4Details" aria-expanded="false"
-                                                aria-controls="policy1Details">
-                                                More
+                                            <h5 class="card-title">Premium Plus Plan</h5>
+                                            <p class="card-text small text-muted">Policy Number: PP98765</p>
+                                            <p class="card-text">Our top-tier plan with maximum coverage and additional benefits.</p>
+                                            <p class="card-text small"><strong>Coverage:</strong> $75,000 | <strong>Premium:</strong> $700/year</p>
+                                            <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#policy4Details" aria-expanded="false" aria-controls="policy4Details">
+                                                More Details <i class="fas fa-chevron-down ms-1"></i>
                                             </button>
                                         </div>
-                                        <!-- Right Side -->
                                         <div>
-                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                            <a href="#" class="btn btn-primary btn-sm">Buy Now</a>
                                         </div>
                                     </div>
-                                    <!-- Collapsible Section -->
                                     <div class="collapse" id="policy4Details">
-                                        <div class="card-body">
-                                            <p class="card-text">Additional details about Policy 4. This section
-                                                provides more information about the policy, including terms, conditions,
-                                                and benefits.</p>
+                                        <div class="card-body bg-light rounded-bottom">
+                                            <p class="card-text">Explore the Premium Plus Plan, offering the highest level of financial protection and exclusive benefits for your peace of mind.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <!-- Information Section -->
                     <div class="col-12 col-lg-4">
-                        <div class="row g-4">
+                        <div class="row g-3">
                             <div class="col-12">
-                                <div class="card shadow" style="width: 100%; height: 120px;">
+                                <div class="card bg-info text-white shadow-sm">
                                     <div class="card-body">
-                                        <h5 class="card-title">24/7 Claim Assistance</h5>
-                                        <p class="card-text">We are here to assist you with claims anytime, anywhere.
-                                        </p>
+                                        <h5 class="card-title"><i class="fas fa-headset me-2"></i>24/7 Claim Assistance</h5>
+                                        <p class="card-text">We are here to assist you with claims anytime, anywhere.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="card shadow" style="width: 100%; height: 120px;">
+                                <div class="card bg-success text-white shadow-sm">
                                     <div class="card-body">
-                                        <h5 class="card-title">Customer Support</h5>
-                                        <p class="card-text">Reach out to our support team for any queries or help.</p>
+                                        <h5 class="card-title"><i class="fas fa-users me-2"></i>Dedicated Customer Support</h5>
+                                        <p class="card-text">Reach out to our support team for any queries or assistance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card bg-warning text-dark shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-file-alt me-2"></i>Easy Policy Management</h5>
+                                        <p class="card-text">Manage your policies, renewals, and more with ease.</p>
                                     </div>
                                 </div>
                             </div>
@@ -224,12 +262,13 @@
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="bg-black bg-opacity-75 text-white text-center py-3 mt-5">
-        &copy; 2025 AutoInsurance Management System. All rights reserved.
+
+    <footer class="bg-black bg-opacity-75 text-white text-center py-3 mt-4">
+        &copy; 2025 Auto Insurance Management System. All rights reserved.
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 
 </html>
