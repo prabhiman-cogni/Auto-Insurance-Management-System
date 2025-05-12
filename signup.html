@@ -78,12 +78,15 @@
                             <div class="error-message text-danger small mt-1" id="addressError"></div>
                         </div>
 
-                        <div class="mb-3 row g-3">
-                            <div class="col-md-6">
+                        <div id="vehicleNumberField" style="display: none;">
+                            <div class="mb-3">
                                 <label for="VehicleNumber" class="form-label">Vehicle Number:</label>
-                                <input type="text" class="form-control" id="VehicleNumber" name="VehicleNumber" placeholder="VehicleNumber" title="Enter your valid VehicleNumber number" required>
+                                <input type="text" class="form-control" id="VehicleNumber" name="VehicleNumber" placeholder="VehicleNumber" title="Enter your valid Vehicle Number">
                                 <div class="error-message text-danger small mt-1" id="VehicleNumberError"></div>
                             </div>
+                        </div>
+
+                        <div class="mb-3 row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Gender:</label>
                                 <div class="form-check">
@@ -160,12 +163,19 @@
                 if ($(this).val() === "agent") {
                     $("#agentFields").slideDown();
                     $("#adminFields").slideUp();
+                    $("#vehicleNumberField").slideUp();
                 } else if ($(this).val() === "admin") {
                     $("#adminFields").slideDown();
                     $("#agentFields").slideUp();
+                    $("#vehicleNumberField").slideUp();
+                } else if ($(this).val() === "user") {
+                    $("#vehicleNumberField").slideDown();
+                    $("#agentFields").slideUp();
+                    $("#adminFields").slideUp();
                 } else {
                     $("#agentFields").slideUp();
                     $("#adminFields").slideUp();
+                    $("#vehicleNumberField").slideUp();
                 }
             });
 
@@ -192,7 +202,7 @@
                 const emailRegex = /^[a-z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
                 const mobileRegex = /^[0-9]{10}$/;
                 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-                const VehicleNumberRegex = /^.{10}/;
+                const VehicleNumberRegex = /^.{10}/; // Basic check for non-empty, adjust as needed
 
                 if (!role) {
                     $("#roleError").text("Please select a role.");
@@ -226,8 +236,8 @@
                     $("#addressError").text("Please enter your address.");
                     isValid = false;
                 }
-                if (!VehicleNumberRegex.test(VehicleNumber)) {
-                    $("#VehicleNumberError").text("Please enter a valid VehicleNumber number.");
+                if (role === "user" && !VehicleNumberRegex.test(VehicleNumber)) {
+                    $("#VehicleNumberError").text("Please enter a valid Vehicle Number.");
                     isValid = false;
                 }
                 if (!passwordRegex.test(pwd)) {
@@ -262,7 +272,7 @@
                 }
 
                 if (isValid) {
-                    alert("Registration Successful (Client-side validation only) - Role: " + role + (role === "agent" ? ", License: " + $("#licenseNumber").val() : "") + (role === "admin" ? ", Admin Code: " + $("#adminCode").val() : ""));
+                    alert("Registration Successful (Client-side validation only) - Role: " + role + (role === "agent" ? ", License: " + $("#licenseNumber").val() : "") + (role === "admin" ? ", Admin Code: " + $("#adminCode").val() : "") + (role === "user" ? ", Vehicle Number: " + $("#VehicleNumber").val() : ""));
                     // In a real application, you would send this data to the server for registration.
                 }
             });
