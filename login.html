@@ -77,15 +77,12 @@
                 $("#password-error").text("");
                 $("#login-message").hide();
 
-                var userType = $("#userType").val();
+        
                 var email = $("#email").val().trim();
                 var password = $("#password").val();
                 var isValid = true;
 
-                if (userType === "") {
-                    $("#user-type-error").text("Please select your user type.");
-                    isValid = false;
-                }
+                
 
                 if (email === "") {
                     $("#email-error").text("Please enter your username or email.");
@@ -107,13 +104,13 @@
                     let loginSuccess = false;
                     let redirectURL = "";
 
-                    if (userType === "user" && (email === "user@gmail.com") && password === "user123") {
+                    if ((email === "user@gmail.com") && password === "user123") {
                         loginSuccess = true;
                         redirectURL = "../User/UserDashboard.html";
-                    } else if (userType === "agent" && (email === "agent@gmail.com") && password === "agent123") {
+                    } else if ((email === "agent@gmail.com") && password === "agent123") {
                         loginSuccess = true;
                         redirectURL = "../Agent/AgentDashboard.html";
-                    } else if (userType === "admin" && (email === "admin@gmail.com") && password === "admin123") {
+                    } else if ((email === "admin@gmail.com") && password === "admin123") {
                         loginSuccess = true;
                         redirectURL = "../Admin/AdminDashboard.html";
                     }
