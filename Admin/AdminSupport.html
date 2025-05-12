@@ -1,97 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Customer Support</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            background-image: url('./contact-us-2.png'); /* Replace with the actual path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background for readability */
+        }
+    </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">Auto Insurance</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav"> 
-        <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="policy.html">Policy</a></li>
-        <li class="nav-item"><a class="nav-link" href="claims.html">Claims</a></li>
-        <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
-        <li class="nav-item"><a class="nav-link active" href="support.html">Support</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Page Title -->
-<div class="container mt-4">
-  <h2 class="text-center mb-4">Customer Support</h2>
-  <!-- Submit Support Ticket -->
-  <div class="card mb-4">
-    <div class="card-header bg-primary text-white">Submit a Support Ticket</div>
-    <div class="card-body">
-      <form id="supportForm">
-        <div class="mb-3">
-          <label for="supportEmail" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="supportEmail" required />
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Customer Support Admin Panel</h1>
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4>Support Tickets Overview</h4>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="ticketFilter" class="form-label">Filter by:</label>
+                    <select id="ticketFilter" class="form-select">
+                        <option value="all">All</option>
+                        <option value="user">User</option>
+                        <option value="agent">Agent</option>
+                    </select>
+                </div>
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Raised By</th>
+                            <th>User ID</th>
+                            <th>Issue Description</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            <th>Resolved Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketTable">
+                        <!-- Dynamic rows will be appended here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="mb-3">
-          <label for="supportIssue" class="form-label">Issue</label>
-          <input type="text" class="form-control" id="supportIssue" required />
-        </div>
-        <div class="mb-3">
-          <label for="supportDetails" class="form-label">Details</label>
-          <textarea class="form-control" id="supportDetails" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
     </div>
-  </div>
-  <!-- Ticket Status Table -->
-  <div class="card">
-    <div class="card-header bg-secondary text-white">Support Tickets</div>
-    <div class="card-body">
-      <table class="table table-bordered table-striped" id="supportTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Email</th>
-            <th>Issue</th>
-            <th>Details</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Dynamic Rows -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<!-- jQuery -->
-<script>
-  let ticketCount = 1;
-  $('#supportForm').on('submit', function (e) {
-    e.preventDefault();
-    const email = $('#supportEmail').val();
-    const issue = $('#supportIssue').val();
-    const details = $('#supportDetails').val();
-    const row = `
-      <tr>
-        <td>${ticketCount++}</td>
-        <td>${email}</td>
-        <td>${issue}</td>
-        <td>${details}</td>
-        <td>Open</td>
-      </tr>
-    `;
-    $('#supportTable tbody').append(row);
-    this.reset();
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Sample data for demonstration
+            const tickets = [
+                {
+                    ticketId: 1,
+                    raisedBy: "user",
+                    userId: 101,
+                    issueDescription: "Policy document not received",
+                    ticketStatus: "OPEN",
+                    createdDate: "2023-10-01",
+                    resolvedDate: null
+                },
+                {
+                    ticketId: 2,
+                    raisedBy: "agent",
+                    userId: 102,
+                    issueDescription: "Claim processing delay",
+                    ticketStatus: "RESOLVED",
+                    createdDate: "2023-09-25",
+                    resolvedDate: "2023-09-30"
+                }
+            ];
+
+            // Function to populate table with ticket data
+            function populateTable(filter) {
+                $("#ticketTable").empty();
+                tickets
+                    .filter(ticket => filter === "all" || ticket.raisedBy === filter)
+                    .forEach(ticket => {
+                        const row = `
+                            <tr>
+                                <td>${ticket.ticketId}</td>
+                                <td>${ticket.raisedBy.charAt(0).toUpperCase() + ticket.raisedBy.slice(1)}</td>
+                                <td>${ticket.userId}</td>
+                                <td>${ticket.issueDescription}</td>
+                                <td>${ticket.ticketStatus}</td>
+                                <td>${ticket.createdDate}</td>
+                                <td>${ticket.resolvedDate || "N/A"}</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm resolve-btn" ${ticket.ticketStatus === "RESOLVED" ? "disabled" : ""}>Resolve</button>
+                                    <button class="btn btn-danger btn-sm reject-btn">Reject</button>
+                                </td>
+                            </tr>
+                        `;
+                        $("#ticketTable").append(row);
+                    });
+            }
+
+            // Initial population of the table
+            populateTable("all");
+
+            // Event listener for dropdown filter
+            $("#ticketFilter").change(function () {
+                const filter = $(this).val();
+                populateTable(filter);
+            });
+
+            // Event listeners for buttons
+            $(document).on("click", ".resolve-btn", function () {
+                const row = $(this).closest("tr");
+                row.find("td:nth-child(5)").text("RESOLVED");
+                row.find("td:nth-child(7)").text(new Date().toISOString().split('T')[0]);
+                $(this).prop("disabled", true);
+            });
+
+            $(document).on("click", ".reject-btn", function () {
+                const confirmation = confirm("Are you sure you want to reject this ticket?");
+                if (confirmation) {
+                    $(this).closest("tr").remove();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
