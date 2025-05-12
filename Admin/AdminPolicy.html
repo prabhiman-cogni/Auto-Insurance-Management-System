@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
+        /* General styles */
+        .navbar, footer {
+            background-color: #fff !important; /* White navbar and footer */
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: #007bff !important; /* Primary blue brand text */
+        }
+        .navbar-nav .nav-link {
+            color: #555 !important; /* Medium gray nav link text */
+            margin-left: 0.7rem;
+            margin-right: 0.7rem;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #0056b3 !important; /* Darker blue hover text */
+        }
+        .navbar-nav .nav-link.active {
+            font-weight: 500;
+            color: #007bff !important; /* Highlighted active link */
+        }
         body {
             background: linear-gradient(135deg, #f0f2f0, #e0e0e0); /* Subtle gradient background */
             min-height: 100vh;
@@ -169,27 +193,46 @@
             color: #555;
             margin-bottom: 5px;
         }
+        footer {
+            color: #343a40;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            margin-top: 2rem; /* Add some space between content and footer */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            font-size: 0.9rem;
+            text-align: center; /* Center the footer text */
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: #0056b3;
+        }
     </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="AdminDashboard.html">Admin Dashboard</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Clients</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="AdminDashboard.html">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="AdminDashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="bg-overlay">
         <div class="container-fluid mt-4">
             <div class="row">
@@ -297,6 +340,9 @@
         </div>
       </div>
     </div>
+    <footer class="text-center py-3">
+        &copy; 2025 My Auto Insurance. All rights reserved.
+    </footer>
 
     <script>
       $(document).ready(function () {
