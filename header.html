@@ -16,13 +16,22 @@
             <a class="navbar-brand" href="#">
                 <img src="../images/logo.png" alt="AutoInsure Logo" height="50" class="d-inline-block align-middle">
             </a>
-            <div class="d-flex align-items-center">
-                <a href="dashboard.html" class="btn btn-outline-dark me-2">
-                    <i class="fa fa-tachometer me-1"></i> Dashboard
-                </a>
-                <a href="login.html" class="btn btn-outline-dark me-2">
-                    <i class="fa fa-sign-in me-1"></i> Log In
-                </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="User/User-login.html">User</a></li>
+                            <li><a class="dropdown-item" href="User/User-login.html?role=agent">Agent</a></li>
+                            <li><a class="dropdown-item" href="User/User-login.html?role=admin">Admin</a></li>
+                        </ul>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="User/register.html">Register</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
