@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="path/to/logo.ico" type="image/x-icon">
+    <title>AutoInsure</title>
+</head>
+<body>
+    <div id='header-container'></div> 
+
+    <div class="mt-4 p-4 bg-light text-center">
+        <p class="text-center text-decoration-underline" style="font-size: 1.8rem; color: #002960; text-shadow: 1px 1px 2px #ced4da;">Contact Information</p>
+        <div class="mt-2">
+            <p class="mb-2" style="font-size: 1.1rem; font-family: Fantasy; color: #212529;"><i class="fa fa-phone"></i> &nbsp; Call Our 24/7 Service Line : &nbsp; 0 1 1 - 29 033 01</p>
+            <p class="mb-2" style="font-size: 1.1rem; font-family: Fantasy; color: #212529;"><i class="fa fa-fax"></i> &nbsp; Fax Us : &nbsp; 0 7 1 - 21 167 04</p>
+            <p class="mb-2" style="font-size: 1.1rem; font-family: Fantasy; color: #212529;"><i class="fa fa-envelope"></i> &nbsp; E-mail Us &nbsp; : &nbsp; <a href="mailto:AutoInsure@gmail.com">AutoInsure@gmail.com</a></p>
+            <p class="mb-2" style="font-size: 1.1rem; font-family: Fantasy; color: #212529;"><i class="fa fa-map-marker"></i> &nbsp; Visit us at : &nbsp; Siruseri, Chennai</p><br/><br/>
+        </div>
+    </div>
+
+    
+
+    <div class="container mt-4">
+        <div class="p-4 rounded shadow" style="background-image: url('../images/background image.jpg'); background-size: cover; color: #212529;">
+            <h2 class="text-center text-decoration-underline" style="color: #002960; text-shadow: 1px 1px 2px #ced4da; font-size: 1.5rem; margin-bottom: 1.5rem;">Inquiry Form</h2>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <input type="text" class="form-control" size="35" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" size="35" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" size="35" name="mobilenum" placeholder="Your Number" required>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Type Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <div id="form-message" class="mt-3"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mt-4 p-3 rounded shadow bg-light" id="faq">
+        <h3 class="text-center text-decoration-underline" style="color: #002960; text-shadow: 1px 1px 2px #ced4da; font-size: 1.5rem; margin-bottom: 1.5rem;">Frequently Asked Questions</h3>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <strong>Q: What types of vehicle insurance do you offer?</strong>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        A: We offer a range of insurance options, including comprehensive coverage, third-party liability, collision coverage, and more. You can choose the type of insurance that best suits your needs.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Q: How can I get a quote for my vehicle insurance?</strong>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        A: Getting a quote is easy! Simply visit our website and fill out the online quote form with your vehicle information, personal details, and coverage preferences. Our system will generate a quote based on the information provided.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Q: Can I insure multiple vehicles under the same policy?</strong>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        A: Yes, we offer multi-vehicle insurance policies that allow you to insure multiple vehicles under a single policy. This can help simplify your insurance management and may offer cost savings as well.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <strong>Q: What factors affect the cost of my vehicle insurance?</strong>
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        A: Several factors can influence the cost of your insurance, including your driving history, vehicle make and model, age, location, and coverage options chosen. These factors help determine the level of risk associated with insuring your vehicle.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <strong>Q: How do I file a claim if my vehicle is involved in an accident?</strong>
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        A: In the event of an accident, you can file a claim by contacting our claims department through the provided contact information on our website. Our team will guide you through the claims process and assist you in submitting the necessary documentation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("#header-container").load("header.html");
+            $("#footer-container").load("footer.html");
+        });
+        $(document).ready(function() {
+            $("#contactForm").submit(function(event) {
+                event.preventDefault(); 
+                $(".error-message").text(""); 
+                $("#form-message").hide(); 
+
+                var name = $("input[name='name']").val().trim();
+                var email = $("input[name='email']").val().trim();
+                var mobilenum = $("input[name='mobilenum']").val().trim();
+                var message = $("textarea[name='message']").val().trim();
+                var isValid = true;
+
+                // Validate empty fields
+                if (name === "") {
+                    $("input[name='name']").next(".error-message").text("Please enter your name.");
+                    isValid = false;
+                }
+                if (email === "") {
+                    $("input[name='email']").next(".error-message").text("Please enter your email.");
+                    isValid = false;
+                }
+                if (mobilenum === "") {
+                    $("input[name='mobilenum']").next(".error-message").text("Please enter your number.");
+                    isValid = false;
+                }
+                if (message === "") {
+                    $("textarea[name='message']").next(".error-message").text("Please enter your message.");
+                    isValid = false;
+                }
+
+                // Validate email format
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (email !== "" && !emailRegex.test(email)) {
+                    $("input[name='email']").next(".error-message").text("Please enter a valid email address.");
+                    isValid = false;
+                }
+
+                // Validate number format (basic numeric check)
+                var numberRegex = /^[+]?[0-9]+$/;
+                if (mobilenum !== "" && !numberRegex.test(mobilenum)) {
+                    $("input[name='mobilenum']").next(".error-message").text("Please enter a valid number (only digits allowed).");
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    $("#form-message").removeClass("alert-danger").addClass("alert-success").text("Form submitted successfully! (Client-side validation only)").show();
+                    $("#contactForm")[0].reset(); // Clear the form
+                    // In a real scenario, you would now send this data to a server using AJAX
+                    console.log("Form data:", { name: name, email: email, mobilenum: mobilenum, message: message });
+                } else {
+                    $("#form-message").removeClass("alert-success").addClass("alert-danger").text("Please correct the errors in the form.").show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
