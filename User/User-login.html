@@ -5,24 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login - Insurance Dashboard</title>
     <style>
-        /* Your existing CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-
         body {
             background: linear-gradient(45deg, #00bcd4, #2196f3);
             display: flex;
             flex-direction: column; /* Arrange navbar and content vertically */
             justify-content: flex-start; /* Align items to the top */
             align-items: center;
-            min-height: 100vh; /* Ensure full viewport height */
-            overflow: auto; /* Allow scrolling if content overflows */
+            min-height: 100vh; /* Ensures full viewport height */
+            overflow: auto; /* Allowing scrolling if content overflows */
         }
-
         /* Navbar styles */
         .navbar {
             background-color: #333;
@@ -32,7 +29,6 @@
             text-align: center;
             margin-bottom: 30px; /* Add some space between navbar and login box */
         }
-
         .navbar a {
             color: white;
             text-decoration: none;
@@ -40,11 +36,9 @@
             font-size: 18px;
             transition: color 0.3s ease;
         }
-
         .navbar a:hover {
             color: #00bcd4;
         }
-
         .login-container {
             display: flex;
             justify-content: center;
@@ -52,7 +46,6 @@
             width: 100%;
             flex-grow: 1; /* Allow login container to take remaining vertical space */
         }
-
         .login-box {
             background: rgba(255, 255, 255, 0.95);
             padding: 50px 40px;
@@ -62,7 +55,6 @@
             text-align: center;
             animation: fadeIn 1s ease-out;
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -73,19 +65,16 @@
                 transform: translateY(0);
             }
         }
-
         .login-box h2 {
             margin-bottom: 30px;
             color: #333;
             font-size: 32px;
             font-weight: bold;
         }
-
         .textbox {
             margin: 20px 0;
             position: relative;
         }
-
         .textbox input {
             width: 100%;
             padding: 15px;
@@ -95,32 +84,26 @@
             outline: none;
             transition: 0.3s;
         }
-
         .textbox input:focus {
             border-color: #00bcd4;
         }
-
         .error-message {
             color: red;
             font-size: 14px;
             margin-top: 5px;
         }
-
         .forgot-password {
             margin: 10px 0;
             font-size: 14px;
         }
-
         .forgot-password a {
             text-decoration: none;
             color: #00bcd4;
             transition: 0.3s;
         }
-
         .forgot-password a:hover {
             text-decoration: underline;
         }
-
         .btn {
             width: 100%;
             padding: 15px;
@@ -133,11 +116,9 @@
             transition: 0.3s;
             margin-bottom: 20px;
         }
-
         .btn:hover {
             background-color: #0097a7;
         }
-
         .back-btn {
             padding: 10px 20px;
             background-color: #2196f3;
@@ -149,22 +130,18 @@
             width: 100%;
             text-align: center;
         }
-
         .back-btn:hover {
             background-color: #1976d2;
         }
-
         .signup-link {
             margin-top: 15px;
             font-size: 14px;
         }
-
         .signup-link a {
             color: #00bcd4;
             text-decoration: none;
             transition: 0.3s;
         }
-
         .signup-link a:hover {
             text-decoration: underline;
         }
@@ -206,21 +183,17 @@
                 'agent': { 'agent@gmail.com': 'agent123' },
                 'admin': { 'admin@gmail.com': 'admin123' }
             };
-
             // Function to get query parameters from the URL
             function getQueryParam(param) {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get(param);
             }
-
             // Determine the role from the query parameter
             const role = getQueryParam('role') || 'user'; // Default to 'user' if no role is provided
-
             function isValidEmail(email) {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return emailRegex.test(email);
             }
-
             function performLogin() {
                 const emailInput = $("#email");
                 const passwordInput = $("#password");
@@ -229,15 +202,12 @@
                 const email = emailInput.val().trim();
                 const password = passwordInput.val();
                 let isValid = true;
-
                 emailError.text('');
                 passwordError.text('');
-
                 if (!isValidEmail(email)) {
                     emailError.text('Please enter a valid email address.');
                     isValid = false;
                 }
-
                 if (isValid) {
                     // Check against predefined users for the current role
                     if (predefinedUsers[role] && predefinedUsers[role][email] === password) {
@@ -257,9 +227,7 @@
                     }
                 }
             }
-
             $("#loginBtn").on('click', performLogin);
-
             // Handle Enter key press on the form
             $("#loginForm").on('keypress', function(event) {
                 if (event.which === 13) { // 13 is the keycode for Enter
