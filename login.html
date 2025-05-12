@@ -20,16 +20,6 @@
     <div class="d-flex justify-content-center align-items-center p-2 mt-3">
         <div class="border p-4 rounded shadow" style="text-align: center; background-color: #fff; max-width: 400px; width: 100%;">
             <form id="loginForm">
-                <span class="login-label d-block" style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: bold; color: #333;">Log in as</span>
-                <div class="mb-3">
-                    <select class="form-select" id="userType" name="userType" required>
-                        <option value="">Select User Type</option>
-                        <option value="user">User</option>
-                        <option value="agent">Agent</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    <div class="error-message text-danger" id="user-type-error"></div>
-                </div>
                 <span class="login-label d-block" style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: bold; color: #333;">Enter Credentials</span>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="email" id="email" placeholder="Username or E-mail" required>
@@ -87,15 +77,12 @@
                 $("#password-error").text("");
                 $("#login-message").hide();
 
-                var userType = $("#userType").val();
+        
                 var email = $("#email").val().trim();
                 var password = $("#password").val();
                 var isValid = true;
 
-                if (userType === "") {
-                    $("#user-type-error").text("Please select your user type.");
-                    isValid = false;
-                }
+                
 
                 if (email === "") {
                     $("#email-error").text("Please enter your username or email.");
@@ -117,13 +104,13 @@
                     let loginSuccess = false;
                     let redirectURL = "";
 
-                    if (userType === "user" && (email === "user@gmail.com") && password === "user123") {
+                    if ((email === "user@gmail.com") && password === "user123") {
                         loginSuccess = true;
                         redirectURL = "../User/UserDashboard.html";
-                    } else if (userType === "agent" && (email === "agent@gmail.com") && password === "agent123") {
+                    } else if ((email === "agent@gmail.com") && password === "agent123") {
                         loginSuccess = true;
                         redirectURL = "../Agent/AgentDashboard.html";
-                    } else if (userType === "admin" && (email === "admin@gmail.com") && password === "admin123") {
+                    } else if ((email === "admin@gmail.com") && password === "admin123") {
                         loginSuccess = true;
                         redirectURL = "../Admin/AdminDashboard.html";
                     }
