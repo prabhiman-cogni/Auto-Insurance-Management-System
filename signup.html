@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="path/to/logo.ico" type="image/x-icon">
+    <title>AutoInsure - Sign Up</title>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <div class="greeting py-2 text-center text-dark">
+        <span>We need some information to match you to AutoInsure</span>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-12">
+                <form id="signupForm" class="bg-white shadow rounded p-4">
+                    <fieldset class="border p-3 rounded">
+                        <span class="mb-3 d-block text-center fw-bold">Please fill out the form below to register with AutoInsure.</span>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Registering as:</label>
+                            <select class="form-select" id="role" name="role" required>
+                                <option value="">Select Role</option>
+                                <option value="user">User</option>
+                                <option value="agent">Agent</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            <div class="error-message text-danger small mt-1" id="roleError"></div>
+                        </div>
+                        <div class="mb-3 row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First name:</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" title="Enter your first name" required>
+                                <div class="error-message text-danger small mt-1" id="firstNameError"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last name:</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" title="Enter your last name" required>
+                                <div class="error-message text-danger small mt-1" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row g-3">
+                            <div class="col-md-6">
+                                <label for="userName" class="form-label">Username:</label>
+                                <input type="text" class="form-control" id="userName" name="userName" placeholder="Username" pattern="[a-zA-Z0-9@_-]+" title="Username must contain only letters (both lowercase and uppercase), numbers, @, _, or -." required>
+                                <div class="error-message text-danger small mt-1" id="userNameError"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">E-mail:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="abc@gmail.com" pattern="[a-z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,3}" title="Enter a valid email" required>
+                                <div class="error-message text-danger small mt-1" id="emailError"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row g-3">
+                            <div class="col-md-6">
+                                <label for="DOB" class="form-label">Choose your DOB:</label>
+                                <input type="date" class="form-control" id="DOB" name="DOB" title="Choose your date of birth" required>
+                                <div class="error-message text-danger small mt-1" id="DOBError"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="mobile" class="form-label">Mobile number:</label>
+                                <input type="tel" class="form-control" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="077-XXXXXXX" title="Enter your mobile number" required>
+                                <div class="error-message text-danger small mt-1" id="mobileError"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address:</label>
+                            <textarea class="form-control" id="address" name="address" rows="3" placeholder="Address" title="Enter your address" required></textarea>
+                            <div class="error-message text-danger small mt-1" id="addressError"></div>
+                        </div>
+
+                        <div class="mb-3 row g-3">
+                            <div class="col-md-6">
+                                <label for="VehicleNumber" class="form-label">Vehicle Number:</label>
+                                <input type="text" class="form-control" id="VehicleNumber" name="VehicleNumber" placeholder="VehicleNumber" title="Enter your valid VehicleNumber number" required>
+                                <div class="error-message text-danger small mt-1" id="VehicleNumberError"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Gender:</label>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="gender" value="Male" id="male" checked>
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="gender" value="Female" id="female">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="agentFields" style="display: none;">
+                            <div class="mb-3">
+                                <label for="licenseNumber" class="form-label">License Number:</label>
+                                <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number" title="Enter your license number">
+                                <div class="error-message text-danger small mt-1" id="licenseNumberError"></div>
+                            </div>
+                        </div>
+
+                        <div id="adminFields" style="display: none;">
+                            <div class="mb-3">
+                                <label for="adminCode" class="form-label">Admin Code:</label>
+                                <input type="password" class="form-control" id="adminCode" name="adminCode" placeholder="Admin Code" title="Enter the admin code">
+                                <div class="error-message text-danger small mt-1" id="adminCodeError"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row g-3">
+                            <div class="col-md-6">
+                                <label for="pwd" class="form-label">Password:</label>
+                                <input type="password" class="form-control" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" title="Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one digit." required>
+                                <div class="error-message text-danger small mt-1" id="pwdError"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="pwdRepeat" class="form-label">Re-enter Password:</label>
+                                <input type="password" class="form-control" id="pwdRepeat" name="repeat-pwd" placeholder="Re-enter password" title="Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one digit." required>
+                                <div class="error-message text-danger small mt-1" id="pwdRepeatError"></div>
+                            </div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <label class="form-check-label" for="checkbox">Agree terms & conditions</label>
+                            <div class="error-message text-danger small mt-1" id="termsError"></div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Register</button>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span>Already have an account? <a href="login.html">Click here</a></span>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("#header-container").load("header.html");
+            $("#footer-container").load("footer.html");
+        });
+        $(document).ready(function() {
+            $("#checkbox").change(function() {
+                $("#submitBtn").prop("disabled", !this.checked);
+            });
+
+            $("#role").change(function() {
+                if ($(this).val() === "agent") {
+                    $("#agentFields").slideDown();
+                    $("#adminFields").slideUp();
+                } else if ($(this).val() === "admin") {
+                    $("#adminFields").slideDown();
+                    $("#agentFields").slideUp();
+                } else {
+                    $("#agentFields").slideUp();
+                    $("#adminFields").slideUp();
+                }
+            });
+
+            $("#signupForm").submit(function(event) {
+                event.preventDefault();
+                $(".error-message").text("");
+                let isValid = true;
+
+                const role = $("#role").val();
+                const firstName = $("#firstName").val().trim();
+                const lastName = $("#lastName").val().trim();
+                const userName = $("#userName").val().trim();
+                const email = $("#email").val().trim();
+                const dob = $("#DOB").val();
+                const mobile = $("#mobile").val().trim();
+                const address = $("#address").val().trim();
+                const VehicleNumber = $("#VehicleNumber").val().trim();
+                const pwd = $("#pwd").val();
+                const pwdRepeat = $("#pwdRepeat").val();
+                const termsChecked = $("#checkbox").prop("checked");
+
+                const nameRegex = /^[a-zA-Z]+$/;
+                const usernameRegex = /^[a-zA-Z0-9@_-]+$/;
+                const emailRegex = /^[a-z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                const mobileRegex = /^[0-9]{10}$/;
+                const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+                const VehicleNumberRegex = /^.{10}/;
+
+                if (!role) {
+                    $("#roleError").text("Please select a role.");
+                    isValid = false;
+                }
+                if (!nameRegex.test(firstName)) {
+                    $("#firstNameError").text("Please enter a valid first name.");
+                    isValid = false;
+                }
+                if (!nameRegex.test(lastName)) {
+                    $("#lastNameError").text("Please enter a valid last name.");
+                    isValid = false;
+                }
+                if (!usernameRegex.test(userName)) {
+                    $("#userNameError").text("Username must contain only letters, numbers, @, _, or -.");
+                    isValid = false;
+                }
+                if (!emailRegex.test(email)) {
+                    $("#emailError").text("Please enter a valid email address.");
+                    isValid = false;
+                }
+                if (!dob) {
+                    $("#DOBError").text("Please select your date of birth.");
+                    isValid = false;
+                }
+                if (!mobileRegex.test(mobile)) {
+                    $("#mobileError").text("Please enter a valid 10-digit mobile number.");
+                    isValid = false;
+                }
+                if (!address) {
+                    $("#addressError").text("Please enter your address.");
+                    isValid = false;
+                }
+                if (!VehicleNumberRegex.test(VehicleNumber)) {
+                    $("#VehicleNumberError").text("Please enter a valid VehicleNumber number.");
+                    isValid = false;
+                }
+                if (!passwordRegex.test(pwd)) {
+                    $("#pwdError").text("Password must be at least 8 characters with lowercase, uppercase, and a digit.");
+                    isValid = false;
+                }
+                if (pwd !== pwdRepeat) {
+                    $("#pwdRepeatError").text("Passwords do not match.");
+                    isValid = false;
+                }
+                if (!termsChecked) {
+                    $("#termsError").text("Please agree to the terms & conditions.");
+                    isValid = false;
+                }
+
+                if (role === "agent") {
+                    const licenseNumber = $("#licenseNumber").val().trim();
+                    if (!licenseNumber) {
+                        $("#licenseNumberError").text("Please enter your license number.");
+                        isValid = false;
+                    }
+                    // You might want to add a specific pattern validation for the license number
+                }
+
+                if (role === "admin") {
+                    const adminCode = $("#adminCode").val();
+                    if (!adminCode) {
+                        $("#adminCodeError").text("Please enter the admin code.");
+                        isValid = false;
+                    }
+                    // In a real application, you would likely compare this against a secret admin code.
+                }
+
+                if (isValid) {
+                    alert("Registration Successful (Client-side validation only) - Role: " + role + (role === "agent" ? ", License: " + $("#licenseNumber").val() : "") + (role === "admin" ? ", Admin Code: " + $("#adminCode").val() : ""));
+                    // In a real application, you would send this data to the server for registration.
+                }
+            });
+        });
+    </script>
+</body>
+</html>
