@@ -13,6 +13,8 @@
       right: 1rem;
       z-index: 1055;
       min-width: 250px;
+      border-radius: 0.375rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
     }
     /* UI Improvements */
     body {
@@ -63,72 +65,70 @@
       color: #495057;
       text-align: center;
     }
-    .btn {
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .btn-sm {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.85rem;
-    }
-    .btn-success {
-      background-color: #198754;
-      border-color: #198754;
-    }
-    .btn-success:hover, .btn-success:focus {
-      background-color: #157347;
-      border-color: #146c43;
-      box-shadow: 0 0 8px rgba(25, 135, 84, 0.6);
-    }
-    .btn-warning {
-      background-color: #ffc107;
-      border-color: #ffc107;
-      color: #212529;
-    }
-    .btn-warning:hover, .btn-warning:focus {
-      background-color: #e0a800;
-      border-color: #d39e00;
-      color: #212529;
-      box-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
-    }
-    .btn-info {
-      background-color: #0dcaf0;
-      border-color: #0dcaf0;
-      color: #212529;
-    }
-    .btn-info:hover, .btn-info:focus {
-      background-color: #31d2f2;
-      border-color: #25cff2;
-      color: #212529;
-      box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
-    }
-    .btn + .btn {
-      margin-left: 0.5rem;
-    }
-    /* Icons for buttons */
-    .btn .bi {
-      vertical-align: middle;
-      margin-right: 0.3rem;
-      font-size: 1rem;
-    }
-    /* Modal header improvements */
-    .modal-header {
-      background-color: #343a40;
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-    /* Toast improvements */
-    #notificationToast {
-      border-radius: 0.375rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.15);
-    }
+  .full-page-background {
+            background: linear-gradient(135deg, #e0f7fa, #c5e1a5);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+  .navbar, footer {
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+  .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #007bff !important;
+        }
+  .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+            color: #343a40 !important;
+        }
+  .nav-link:hover {
+            color: #0056b3 !important;
+            background-color: rgba(0, 123, 255, 0.08);
+            transform: translateY(-2px);
+        }
+  .nav-link.active {
+            color: #fff !important;
+            background-color: #007bff;
+            border-bottom: none;
+        }
   </style>
   <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 </head>
 <body>
+<div class="full-page-background">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="AdminDashboard.html">My Auto Insurance</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="AdminProfile.html">My Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="AdminPolicy.html">My Policies</a></li>
+          <li class="nav-item"><a class="nav-link" href="AdminClaims.html">Claims</a></li>
+          <li class="nav-item"><a class="nav-link active" href="AdminPayments.html">Payments</a></li>
+          <li class="nav-item"><a class="nav-link" href="AdminSupport.html">Support</a></li>
+          <li class="nav-item"><a class="nav-link" href="AdminHelp.html">Help</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div class="container mt-4">
     <h2>Payment History</h2>
     <table class="table table-striped table-bordered align-middle" id="paymentTable">
