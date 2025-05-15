@@ -220,7 +220,7 @@
           <td>POL12345</td>
           <td>John Doe</td>
           <td>2024-06-01</td>
-          <td>$150.00</td>
+          <td>150.00</td>
           <td>Credit Card</td>
           <td class="status-cell">Completed</td>
           <td>
@@ -240,7 +240,7 @@
           <td>POL67890</td>
           <td>Jane Smith</td>
           <td>2024-06-05</td>
-          <td>$200.00</td>
+          <td>200.00</td>
           <td>UPI</td>
           <td class="status-cell">Pending</td>
           <td>
@@ -432,40 +432,7 @@
         statusModal.hide();
       });
 
-      // PDF download button click handler
-      $('#downloadPdfBtn').click(function () {
-        const { jsPDF } = window.jspdf;
-        let doc = new jsPDF();
-
-        doc.setFontSize(18);
-        doc.text("Payment History", 14, 22);
-        doc.setFontSize(12);
-        doc.text("Auto Insurance - Payment Records", 14, 30);
-
-        let rows = [];
-        $('#paymentTable tbody tr').each(function () {
-          let row = [];
-          $(this).find('td').each(function () {
-            row.push($(this).text().trim());
-          });
-          rows.push(row);
-        });
-
-        if (rows.length === 0) {
-          alert("No payment records available to generate PDF.");
-          return;
-        }
-
-        doc.autoTable({
-          startY: 40,
-          head: [['Transaction ID', 'Policy Number', 'Name', 'Date', 'Amount', 'Mode', 'Status']],
-          body: rows,
-          styles: { fontSize: 10 },
-          headStyles: { fillColor: [52, 58, 64] }
-        });
-
-        doc.save('Payment_History.pdf');
-      });
+  
     });
   </script>
 </body>
