@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Claim Management</title>
-    <!-- Bootstrap & jQuery CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-         body {
+        body {
             font-family: 'Poppins', 'Roboto', sans-serif;
             background-color: #f4f6f8; /* Light gray background */
             color: #333; /* Dark gray text */
@@ -48,19 +47,19 @@
             border-radius: 12px;
             overflow: hidden;
         }
- 
+
         .card-header {
             font-size: 20px;
             font-weight: bold;
         }
- 
+
         /* Input Fields */
         input, select {
             border-radius: 8px;
             padding: 10px;
             font-size: 16px;
         }
- 
+
         /* Button */
         .btn-dark, .btn-success, .btn-danger {
             border-radius: 8px;
@@ -119,13 +118,11 @@
                         <div class="card-body">
                             <form id="search-claims">
                                 <div class="row g-3">
-                                    <!-- Search Claim by ID -->
                                     <div class="col-md-6">
                                         <label for="searchClaimId" class="form-label">Search Claim ID</label>
                                         <input type="number" class="form-control" id="searchClaimId" placeholder="Enter Claim ID">
                                     </div>
- 
-                                    <!-- Filter by Claim Status -->
+
                                     <div class="col-md-6">
                                         <label for="filterStatus" class="form-label">Filter by Status</label>
                                         <select class="form-select" id="filterStatus">
@@ -140,8 +137,7 @@
                                     <button type="button" class="btn btn-dark px-5">Search Claims</button>
                                 </div>
                             </form>
-                           
-                            <!-- Claims Table -->
+
                             <div class="mt-5">
                                 <table class="table table-striped">
                                     <thead class="bg-dark text-white">
@@ -154,24 +150,44 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <!-- Example Claim Row -->
-                                        <tr>
+                                    <tbody id="claims-table-body">
+                                        <tr data-claim-id="12345" data-status="OPEN">
                                             <td>12345</td>
                                             <td>67890</td>
                                             <td>$1,200</td>
                                             <td>2025-05-01</td>
                                             <td><span class="badge bg-warning">OPEN</span></td>
                                             <td>
-                                                <button class="btn btn-success">Approve</button>
-                                                <button class="btn btn-danger">Reject</button>
+                                                <button class="btn btn-success btn-sm approve-btn">Approve</button>
+                                                <button class="btn btn-danger btn-sm reject-btn">Reject</button>
                                             </td>
                                         </tr>
-                                        <!-- More claims will be dynamically added -->
-                                    </tbody>
+                                        <tr data-claim-id="54321" data-status="APPROVED">
+                                            <td>54321</td>
+                                            <td>09876</td>
+                                            <td>$500</td>
+                                            <td>2025-05-05</td>
+                                            <td><span class="badge bg-success">APPROVED</span></td>
+                                            <td>
+                                                <button class="btn btn-success btn-sm approve-btn" disabled>Approve</button>
+                                                <button class="btn btn-danger btn-sm reject-btn">Reject</button>
+                                            </td>
+                                        </tr>
+                                        <tr data-claim-id="98765" data-status="REJECTED">
+                                            <td>98765</td>
+                                            <td>13579</td>
+                                            <td>$2,500</td>
+                                            <td>2025-05-10</td>
+                                            <td><span class="badge bg-danger">REJECTED</span></td>
+                                            <td>
+                                                <button class="btn btn-success btn-sm approve-btn">Approve</button>
+                                                <button class="btn btn-danger btn-sm reject-btn" disabled>Reject</button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
                                 </table>
                             </div>
- 
+
                         </div>
                     </div>
                 </div>
@@ -181,5 +197,69 @@
     <footer class="text-center py-3">
         &copy; 2025 My Auto Insurance. All rights reserved.
     </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Function to update the claim status in the table
+            function updateClaimStatus(claimId, newStatus) {
+                $('tbody tr[data-claim-id="' + claimId + '"]').each(function() {
+                    $(this).find('td:nth-child(5) span.badge').removeClass('bg-warning bg-success bg-danger').text(newStatus);
+                    $(this).attr('data-status', newStatus);
+                    if (newStatus === 'APPROVED') {
+                        $(this).find('.approve-btn').prop('disabled', true);
+                        $(this).find('.reject-btn').prop('disabled', false);
+                        $(this).find('td:nth-child(5) span.badge').addClass('bg-success');
+                    } else if (newStatus === 'REJECTED') {
+                        $(this).find('.approve-btn').prop('disabled', false);
+                        $(this).find('.reject-btn').prop('disabled', true);
+                        $(this).find('td:nth-child(5) span.badge').addClass('bg-danger');
+                    } else if (newStatus === 'OPEN') {
+                        $(this).find('.approve-btn').prop('disabled', false);
+                        $(this).find('.reject-btn').prop('disabled', false);
+                        $(this).find('td:nth-child(5) span.badge').addClass('bg-warning');
+                    }
+                });
+            }
+
+            // Event listener for Approve button
+            $(document).on('click', '.approve-btn', function() {
+                var claimId = $(this).closest('tr').data('claim-id');
+                // In a real application, you would make an AJAX call to update the server
+                console.log('Approving claim ID:', claimId);
+                updateClaimStatus(claimId, 'APPROVED');
+                // Optionally, provide feedback to the user (e.g., a small notification)
+            });
+
+            // Event listener for Reject button
+            $(document).on('click', '.reject-btn', function() {
+                var claimId = $(this).closest('tr').data('claim-id');
+                // In a real application, you would make an AJAX call to update the server
+                console.log('Rejecting claim ID:', claimId);
+                updateClaimStatus(claimId, 'REJECTED');
+                // Optionally, provide feedback to the user
+            });
+
+            // Basic search functionality (client-side only for this example)
+            $('form#search-claims button').on('click', function(e) {
+                e.preventDefault();
+                var searchId = $('#searchClaimId').val().trim();
+                var filterStatus = $('#filterStatus').val();
+
+                $('tbody tr').filter(function() {
+                    var claimIdMatch = true;
+                    if (searchId) {
+                        claimIdMatch = $(this).data('claim-id').toString().includes(searchId);
+                    }
+
+                    var statusMatch = true;
+                    if (filterStatus) {
+                        statusMatch = $(this).data('status') === filterStatus;
+                    }
+
+                    $(this).toggle(claimIdMatch && statusMatch);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
