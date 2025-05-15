@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Payments - View Only</title>
+    <title>Agent Payments</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         body {
             font-family: 'Poppins', 'Roboto', sans-serif;
-            background-color: #f4f6f8; /* Light gray background */
-            color: #333; /* Dark gray text */
+            background-color: #f4f6f8;
+            color: #333;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -21,110 +21,86 @@
             min-height: 100vh;
         }
         .navbar, footer {
-            background-color: #fff !important; /* White navbar and footer */
+            background-color: #fff !important;
             padding: 1rem 1.5rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .navbar-brand {
             font-weight: 700;
             font-size: 1.75rem;
-            color: #007bff !important; /* Primary blue brand text */
+            color: #007bff !important;
         }
         .navbar-nav .nav-link {
-            color: #555 !important; /* Medium gray nav link text */
+            color: #555 !important;
             margin-left: 0.7rem;
             margin-right: 0.7rem;
             transition: color 0.3s ease;
         }
         .navbar-nav .nav-link:hover {
-            color: #0056b3 !important; /* Darker blue hover text */
+            color: #0056b3 !important;
         }
         .navbar-nav .nav-link.active {
             font-weight: 500;
-            color: #007bff !important; /* Highlighted active link */
+            color: #007bff !important;
         }
         .dashboard-container {
             padding: 2rem;
             margin-top: 2rem;
-            flex-grow: 1; /* Allows container to grow and push footer to the bottom */
+            flex-grow: 1;
         }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .full-page-background {
+            background: linear-gradient(135deg, #e0f7fa, #c5e1a5);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
-        .dashboard-card {
-            background-color: #fff;
-            color: #333;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-            border-left: 8px solid;
+        /* Darker borders and shadow for tables and forms */
+        table, th, td {
+            border: 1px solid #dee2e6 !important;
         }
-        .dashboard-card:hover {
-            transform: translateY(-10px); /* More lift on hover */
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18); /* Enhanced shadow on hover */
+        table {
+            box-shadow: none;
         }
-        .dashboard-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
+        form {
+            box-shadow: none;
+            border: 1px solid #ced4da;
+            padding: 1rem;
+            border-radius: 0.375rem;
+        }
+        h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #000000;
+            text-transform: uppercase;
             margin-bottom: 1rem;
-            color: #2c3e50; /* Darker heading text */
         }
-        .dashboard-card p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #777;
+        h4 {
+            font-weight: 600;
+            font-size: 1.75rem;
+            color: #000000;
             margin-bottom: 1.5rem;
+            text-transform: uppercase;
         }
-        .card-button {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            color: #fff;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1); /* Slightly stronger button shadow */
+        /* Fix button logo alignment and adjust button size and text */
+        .btn-lg {
+            font-size: 1.1rem;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            line-height: 1.5;
+            display: inline-flex;
+            align-items: center;
         }
-        .card-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Enhanced button shadow on hover */
+        .btn-lg img {
+            height: 24px;
+            width: 24px;
+            margin-right: 6px;
+            vertical-align: middle;
         }
-        .policy { border-left-color: #66aaff; }
-        .policy .card-button { background-color: #66aaff; }
-        .policy .card-button:hover { background-color: #508ddb; } /* Darker hover */
-
-        .claims { border-left-color: #ff7849; }
-        .claims .card-button { background-color: #ff7849; }
-        .claims .card-button:hover { background-color: #e0633a; } /* Darker hover */
-
-        .payment { border-left-color: #28a745; }
-        .payment .card-button { background-color: #28a745; }
-        .payment .card-button:hover { background-color: #1e843b; } /* Darker hover */
-
-        .support { border-left-color: #17a2b8; }
-        .support .card-button { background-color: #17a2b8; }
-        .support .card-button:hover { background-color: #117a8b; } /* Darker hover */
-
-        .auth { border-left-color: #dc3545; }
-        .auth .card-button { background-color: #dc3545; }
-        .auth .card-button:hover { background-color: #b82e3b; } /* Darker hover */
-
-        .customers { border-left-color: #007bff; }
-        .customers .card-button { background-color: #007bff; }
-        .customers .card-button:hover { background-color: #0056b3; } /* Darker hover */
-
-        .profile { border-left-color: #ffc107; } /* Yellow for profile */
-        .profile .card-button { background-color: #ffc107; }
-        .profile .card-button:hover { background-color: #e0ac00; } /* Darker hover */
-
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="full-page-background">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="AgentDashboard.html">Insurance Agent Portal</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -142,120 +118,355 @@
             </div>
         </div>
     </nav>
-    <div class="dashboard-container">
-        <h2 class="text-center mb-3">Payment History (View Only)</h2>
-        <table class="table table-striped table-bordered align-middle" id="paymentTable">
-            <thead class="table-dark">
-                <tr>
-                    <th>Transaction ID</th>
-                    <th>Policy Number</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Mode</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Sample data rows -->
-                <tr data-transaction-id="TXN001" data-status="Completed">
-                    <td>TXN001</td>
-                    <td>POL12345</td>
-                    <td>John Doe</td>
-                    <td>2024-06-01</td>
-                    <td>$150.00</td>
-                    <td>Credit Card</td>
-                    <td class="status-cell">Completed</td>
-                </tr>
-                <tr data-transaction-id="TXN002" data-status="Pending">
-                    <td>TXN002</td>
-                    <td>POL67890</td>
-                    <td>Jane Smith</td>
-                    <td>2024-06-05</td>
-                    <td>$200.00</td>
-                    <td>UPI</td>
-                    <td class="status-cell">Pending</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="text-center mt-3 mb-3">
-            <button id="downloadPdfBtn" class="btn btn-danger">Download PDF</button>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Agent Payment Checkout</h2>
+
+        <div class="container mt-5 d-flex flex-wrap justify-content-center gap-3">
+            <h4 class="fw-bold w-100 mb-4 text-center">Choose Method</h4>
+
+            <button type="button" class="btn btn-primary btn-lg d-flex align-items-center gap-2 px-4" onclick="showForm('card')">
+                <img src="../Images/mastercard_logo.jfif" alt="Card Payment" width="30" height="30" /> Card
+            </button>
+
+            <button type="button" class="btn btn-dark btn-lg d-flex align-items-center gap-2 px-4" onclick="showForm('upi')">
+                <img src="../Images/upi_logo.png" alt="UPI Payment" width="30" height="30" /> UPI
+            </button>
+        </div>
+
+        <!-- CARD FORM -->
+        <div id="cardForm" class="mt-4 d-none">
+            <div class="card mb-4 shadow-lg">
+                <div class="card-header bg-success text-white"><h5>Enter Card Details</h5></div>
+                <div class="card-body">
+                    <form id="cardPaymentForm">
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label for="transactionIdCard" class="form-label">Transaction ID</label>
+                                <input type="text" class="form-control border border-primary" id="transactionIdCard" readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="agentNameCard" class="form-label">Agent Name</label>
+                                <input type="text" class="form-control border border-primary" id="agentNameCard" placeholder="Enter Agent Name" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label for="policyNumberCard" class="form-label">Policy Number</label>
+                                <input type="text" class="form-control border border-primary" id="policyNumberCard" placeholder="Enter Policy Number" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="policyHolderNameCard" class="form-label">Policy Holder Name</label>
+                                <input type="text" class="form-control border border-primary" id="policyHolderNameCard" placeholder="Enter Policy Holder Name" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" class="form-control border border-primary" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cardHolderName" class="form-label">Card Holder Name</label>
+                                <input type="text" class="form-control border border-primary" id="cardHolderName" placeholder="John Doe" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-4">
+                                <label for="expiryDate" class="form-label">Expiration Date</label>
+                                <input type="month" class="form-control border border-primary" id="expiryDate" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="password" class="form-control border border-primary" id="cvv" maxlength="4" placeholder="123" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="paymentDateCard" class="form-label">Payment Date</label>
+                                <input type="date" class="form-control border border-primary" id="paymentDateCard" readonly />
+                            </div>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label for="paymentAmount" class="form-label">Amount Paid</label>
+                                <input type="number" class="form-control border border-primary" id="paymentAmount" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="paymentMode" class="form-label">Payment Mode</label>
+                                <select class="form-select border border-primary" id="paymentMode" required>
+                                    <option value="">Select</option>
+                                    <option>Credit Card</option>
+                                    <option>Debit Card</option>
+                                    <option>Net Banking</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success d-block mx-auto px-4">Pay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- UPI FORM -->
+        <div id="upiForm" class="mt-4 d-none">
+            <div class="card mb-4 shadow-lg">
+                <div class="card-header bg-warning text-dark"><h5>Enter UPI Details</h5></div>
+                <div class="card-body">
+                    <form id="upiPaymentForm">
+                        <div class="row mb-3 justify-content-center g-3">
+                            <div class="col-md-6">
+                                <label for="transactionIdUpi" class="form-label">Transaction ID</label>
+                                <input type="text" class="form-control border border-primary" id="transactionIdUpi" readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="agentNameUpi" class="form-label">Agent Name</label>
+                                <input type="text" class="form-control border border-primary" id="agentNameUpi" placeholder="Enter Agent Name" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3 justify-content-center g-3">
+                            <div class="col-md-6">
+                                <label for="policyNumberUpi" class="form-label">Policy Number</label>
+                                <input type="text" class="form-control border border-primary" id="policyNumberUpi" placeholder="Enter Policy Number" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="policyHolderNameUpi" class="form-label">Policy Holder Name</label>
+                                <input type="text" class="form-control border border-primary" id="policyHolderNameUpi" placeholder="Enter Policy Holder Name" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="paymentDateUpi" class="form-label">Payment Date</label>
+                                <input type="date" class="form-control border border-primary" id="paymentDateUpi" readonly />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="upiId" class="form-label">UPI ID</label>
+                                <input type="text" class="form-control border border-primary" id="upiId" placeholder="Abcd@12345" autocomplete="off" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="upiAmount" class="form-label">Amount Paid</label>
+                                <input type="number" class="form-control border border-primary" id="upiAmount" autocomplete="off" required />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success d-block mx-auto px-4">Pay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payments Record Table -->
+        <div class="card mt-5">
+            <div class="card-header bg-primary text-white"><h5>Payment History</h5></div>
+            <div class="card-body">
+                        <table class="table table-bordered table-striped" id="paymentTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Transaction ID</th>
+                                    <th>Policy Number</th>
+                                    <th>Name</th>
+                                    <th>Agent Name</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Mode</th>
+                                    <th>Processing Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentTableBody">
+                                <tr id="noPaymentsRow">
+                                    <td colspan="10" class="text-center text-muted">No payments made yet</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <!-- Dynamic Rows -->
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+
+        <!-- Generate Receipt Button -->
+        <div class="text-end mt-2 mb-4">
+            <button type="button" class="btn btn-danger" onclick="generatePDF()">Generate Receipt</button>
         </div>
     </div>
+</div>
 
-    <!-- Notification Toast -->
-    <div class="toast align-items-center text-bg-primary border-0" id="notificationToast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body" id="toastMessage"></div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Include Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Include jsPDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var count = 1; // Row count for numbering
 
-    <!-- jsPDF and jsPDF-autotable libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+        // Set current date as default for payment date fields and make them readonly
+        var today = new Date().toISOString().split('T')[0];
+        $("#paymentDateCard").val(today);
+        $("#paymentDateUpi").val(today);
 
-    <script>
-        $(document).ready(function () {
-            var notificationToast = new bootstrap.Toast(document.getElementById('notificationToast'));
+        // Function to generate a unique transaction ID serially
+        function generateTransactionIdSerial(count) {
+            return 'TXN-' + String(count).padStart(4, '0');
+        }
 
-            // Helper to show notification toast
-            function showNotification(message) {
-                $('#toastMessage').text(message);
-                notificationToast.show();
+        // Set transaction IDs when forms are shown
+        function setTransactionIds() {
+            $("#transactionIdCard").val(generateTransactionIdSerial(count));
+            $("#transactionIdUpi").val(generateTransactionIdSerial(count));
+        }
+
+        // Call setTransactionIds when payment method is selected
+        window.showForm = function(method) {
+            document.getElementById("cardForm").classList.add("d-none");
+            document.getElementById("upiForm").classList.add("d-none");
+
+            if (method === "card") {
+                document.getElementById("cardForm").classList.remove("d-none");
+            } else if (method === "upi") {
+                document.getElementById("upiForm").classList.remove("d-none");
+            }
+            setTransactionIds();
+        };
+
+                $("#cardPaymentForm").submit(function (event) {
+                    event.preventDefault(); // Prevent form submission from refreshing the page
+
+                    // Get values from form inputs
+                    var transactionId = $("#transactionIdCard").val();
+                    var cardNumber = $("#cardNumber").val();
+                    var cardHolderName = $("#cardHolderName").val();
+                    var expiryDate = $("#expiryDate").val();
+                    var cvv = $("#cvv").val();
+                    var paymentDateCard = $("#paymentDateCard").val();
+                    var amountPaid = $("#paymentAmount").val();
+                    var paymentMode = $("#paymentMode").val();
+
+                    var policyNumber = $("#policyNumberCard").val();
+                    var policyHolderName = $("#policyHolderNameCard").val();
+                    var agentName = $("#agentNameCard").val();
+
+                    // Validate inputs (ensure no fields are empty)
+                    if (transactionId && cardNumber && cardHolderName && expiryDate && cvv && paymentDateCard && amountPaid && paymentMode && policyNumber && policyHolderName && agentName) {
+                        // Remove "No payments made yet" message if present
+                        $("#noPaymentsRow").remove();
+
+                        // Append new payment entry
+                        var newRow = `<tr>
+                            <td>${count}</td>
+                            <td class="text-center"><span class="badge bg-danger text-white fw-bold">${transactionId}</span></td>
+                            <td>${policyNumber}</td>
+                            <td>${policyHolderName}</td>
+                            <td>${agentName}</td>
+                            <td>${paymentDateCard}</td>
+                            <td>${amountPaid}</td>
+                            <td>${paymentMode}</td>
+                            <td>Pending</td>
+                            <td><button class="btn btn-danger btn-sm delete-btn">Delete</button></td>
+                        </tr>`;
+
+                $("#paymentTableBody").append(newRow);
+                count++; // Increment row counter
+
+                // Clear form fields after submission
+                $("#cardPaymentForm")[0].reset();
+                // Reset payment date to today after form reset
+                $("#paymentDateCard").val(today);
+                setTransactionIds();
+            } else {
+                alert("Please fill all fields before submitting.");
+            }
+        });
+
+                $("#upiPaymentForm").submit(function (event) {
+                    event.preventDefault();
+
+                    var transactionId = $("#transactionIdUpi").val();
+                    var policyNumber = $("#policyNumberUpi").val();
+                    var paymentName = $("#policyHolderNameUpi").val();
+                    var paymentDateUpi = $("#paymentDateUpi").val();
+                    var upiId = $("#upiId").val();
+                    var upiAmount = $("#upiAmount").val();
+                    var agentName = $("#agentNameUpi").val();
+
+                    if (transactionId && policyNumber && paymentName && paymentDateUpi && upiId && upiAmount && agentName) {
+                        $("#noPaymentsRow").remove();
+
+                        var newRow = `<tr>
+                            <td>${count}</td>
+                            <td class="text-center"><span class="badge bg-danger text-white fw-bold">${transactionId}</span></td>
+                            <td>${policyNumber}</td>
+                            <td>${paymentName}</td>
+                            <td>${agentName}</td>
+                            <td>${paymentDateUpi}</td>
+                            <td>${upiAmount}</td>
+                            <td>UPI</td>
+                            <td>Pending</td>
+                            <td><button class="btn btn-danger btn-sm delete-btn">Delete</button></td>
+                        </tr>`;
+
+                $("#paymentTableBody").append(newRow);
+                count++;
+
+                $("#upiPaymentForm")[0].reset();
+                // Reset payment date to today after form reset
+                $("#paymentDateUpi").val(today);
+                setTransactionIds();
+            } else {
+                alert("Please fill all fields before submitting.");
+            }
+        });
+
+        // Event listener for delete button
+        $(document).on("click", ".delete-btn", function () {
+            $(this).closest("tr").remove();
+
+            // If table is empty after deletion, restore "No payments made yet"
+            if ($("#paymentTableBody tr").length === 0) {
+                $("#paymentTableBody").append('<tr id="noPaymentsRow"><td colspan="10" class="text-center text-muted">No payments made yet</td></tr>');
+            }
+        });
+    });
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("Payment Summary", 20, 20);
+            doc.setFontSize(12);
+            doc.text("Auto Insurance - Payment Record", 20, 30);
+
+            let rows = [];
+            document.querySelectorAll("#paymentTable tbody tr").forEach((tr, index) => {
+                let row = [index + 1];
+                // Extract all td except the last one (actions)
+                let tds = tr.querySelectorAll("td");
+                for (let i = 1; i < tds.length - 1; i++) {
+                    row.push(tds[i].innerText);
+                }
+                rows.push(row);
+            });
+
+            if (rows.length === 0) {
+                alert("No payments available to generate a receipt.");
+                return;
             }
 
-            // Example notification on page load (optional)
-            showNotification('Viewing payment history only. No editing allowed.');
+            if (typeof doc.autoTable !== "function") {
+                alert("Error: autoTable function is not recognized. Please check the autoTable library.");
+                return;
+            }
 
-            // PDF download button click handler
-            $('#downloadPdfBtn').click(function () {
-                const { jsPDF } = window.jspdf;
-                let doc = new jsPDF();
-
-                doc.setFontSize(18);
-                doc.text("Payment History", 14, 22);
-                doc.setFontSize(12);
-                doc.text("Auto Insurance - Payment Records", 14, 30);
-
-                let rows = [];
-                $('#paymentTable tbody tr').each(function () {
-                    let row = [];
-                    $(this).find('td').each(function () {
-                        row.push($(this).text().trim());
-                    });
-                    rows.push(row);
-                });
-
-                if (rows.length === 0) {
-                    alert("No payment records available to generate PDF.");
-                    return;
-                }
-
-                doc.autoTable({
-                    startY: 40,
-                    head: [['Transaction ID', 'Policy Number', 'Name', 'Date', 'Amount', 'Mode', 'Status']],
-                    body: rows,
-                    styles: { fontSize: 10 },
-                    headStyles: { fillColor: [52, 58, 64] }
-                });
-
-                doc.save('Payment_History.pdf');
+            doc.autoTable({
+                startY: 40,
+                head: [["#", "Transaction ID", "Policy Number", "Name", "Agent Name", "Date", "Amount", "Mode", "Processing Status"]],
+                body: rows
             });
-        });
-    </script>
 
-    <!-- Notification Toast -->
-    <div class="toast align-items-center text-bg-primary border-0" id="notificationToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 1rem; right: 1rem; z-index: 1055; min-width: 250px; border-radius: 0.375rem; box-shadow: 0 0 15px rgba(0,0,0,0.15);">
-        <div class="d-flex">
-            <div class="toast-body" id="toastMessage"></div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-      <footer class="text-center py-3">
-        &copy; 2025 My Auto Insurance. All rights reserved.
-      </footer>
-    </body>
+            doc.save("Payment_Summary.pdf");
+        }
+</script>
+</body>
 </html>
